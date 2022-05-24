@@ -17,7 +17,7 @@ export default function Home() {
                 </h1>
 
                 <p className={styles.description}>
-                    Get started by connecting to a websocket server.
+                    Enter your websocket server URL to start analyzing
                 </p>
 
                 <ServerUrlForm/>

@@ -1,35 +1,33 @@
 import React from "react";
+import {useRouter} from "next/router";
+import styles from "../styles/Home.module.css";
 
-class ServerUrlForm extends React.Component {
+export default function ServerUrlForm() {
 
-    constructor(props) {
-        super(props);
-        this.state = {value: ''};
+    const router = useRouter();
+    const [serverUrl, setServerUrl] = React.useState('');
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+    const handleChange = setValue => e => {
+        setValue(e.target.value);
     }
 
-    handleChange(event) {
-        this.setState({value: event.target.value});
+    const handleSubmit = e => {
+        console.log('A name was submitted: ' + serverUrl);
+        e.preventDefault();
+        router.push("/analyzer");
     }
 
-    handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.value);
-        event.preventDefault();
-    }
-
-    render() {
-        return (
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    Server URL:
-                    <input type="url" value={this.state.value} onChange={this.handleChange}/>
-                </label>
-                <input type="submit" value="Submit"/>
-            </form>
-        );
-    }
+    return (
+        <form onSubmit={handleSubmit}>
+            <label>
+                Server URL:
+                <input type="url"
+                       style={{width: '24rem'}}
+                       autoFocus={true}
+                       value={serverUrl}
+                       onChange={handleChange(setServerUrl)}/>
+            </label>
+            <input type="submit" value="Analyze"/>
+        </form>
+    );
 }
-
-export default ServerUrlForm;
