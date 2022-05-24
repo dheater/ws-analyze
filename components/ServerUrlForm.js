@@ -24,9 +24,9 @@ class ServerUrlForm extends React.Component {
             <form onSubmit={this.handleSubmit}>
                 <label>
                     Server URL:
-                    <input type="text" value={this.state.value} onChange={this.handleChange} />
+                    <input type="url" value={this.state.value} onChange={this.handleChange}/>
                 </label>
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Submit"/>
             </form>
         );
     }
