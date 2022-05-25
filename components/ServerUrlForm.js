@@ -1,6 +1,5 @@
 import React from "react";
 import {useRouter} from "next/router";
-import styles from "../styles/Home.module.css";
 
 export default function ServerUrlForm() {
 
@@ -14,7 +13,7 @@ export default function ServerUrlForm() {
     const handleSubmit = e => {
         console.log('A name was submitted: ' + serverUrl);
         e.preventDefault();
-        router.push("/analyzer");
+        router.push({pathname: "/analyzer", query: {url: serverUrl}});
     }
 
     return (
